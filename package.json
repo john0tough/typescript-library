@@ -1,0 +1,61 @@
+{
+    "name": "my-module",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/index.js",
+    "module": "build/index.es.js",
+    "jsnext:main": "build/index.es.js",
+    "scripts": {
+        "build": "rollup -c",
+        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+        "format": "prettier-standard --format",
+        "test": "jest --coverage"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^24.0.24",
+        "@typescript-eslint/eslint-plugin": "^2.19.2",
+        "@typescript-eslint/parser": "^2.19.2",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-simple-import-sort": "^5.0.1",
+        "husky": "^4.2.1",
+        "jest": "^24.9.0",
+        "lint-staged": "^10.0.7",
+        "prettier": "^1.19.1",
+        "rollup": "^1.27.13",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-peer-deps-external": "^2.2.0",
+        "rollup-plugin-typescript2": "^0.25.3",
+        "standard": "^14.3.1",
+        "standard-prettier": "^1.0.1",
+        "ts-jest": "^24.2.0",
+        "typescript": "^3.7.3"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsc --noEmit && lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": [
+            "eslint --fix",
+            "git add",
+            "jest --bail --findRelatedTests"
+        ]
+    },
+    "standard": {
+        "ignore": [
+            "node_modules/",
+            "build/"
+        ]
+    }
+}
